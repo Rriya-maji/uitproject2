@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Your Password?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Matrix code rain background */
+        .matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .matrix span {
+            position: absolute;
+            color: rgba(0, 255, 0, 0.7);
+            font-size: 18px;
+            animation: fall linear infinite;
+        }
+
+        /* Animation for the falling matrix code */
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* JavaScript generated matrix code */
+        .matrix span:nth-child(odd) {
+            animation-duration: 3s;
+        }
+
+        .matrix span:nth-child(even) {
+            animation-duration: 4s;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .emailformbox {
+            background-color: #111;
+            padding: 40px;
+            border: 2px solid #39FF14;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .emailformbox h2 {
+            color: #39FF14;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .inputbox, .inputboxotp {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .inputbox input, .inputboxotp input {
+            width: 100%;
+            padding: 10px 10px;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #39FF14;
+            outline: none;
+            color: #fff;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+
+        .inputbox label, .inputboxotp label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #444;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .inputbox input:focus ~ label,
+        .inputbox input:valid ~ label,
+        .inputboxotp input:focus ~ label,
+        .inputboxotp input:valid ~ label {
+            top: -15px;
+            left: 10px;
+            color: #39FF14;
+            font-size: 0.85em;
+        }
+
+        .icon {
+            position: relative;
+            right: 10px;
+            color: #39FF14;
+            font-size: 1.2em;
+        }
+
+        .otpbtn {
+            padding: 10px 20px;
+            background-color: #000;
+            border: none;
+            color: #39FF14;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.3s;
+            border-radius: 5px;
+            border: 0.3vh solid #39FF14;
+        }
+
+        .proceedbtn {
+            padding: 10px 20px;
+            background-color: #000;
+            border: none;
+            color: #39FF14;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.3s;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 20px;
+            border: 0.3vh solid #39FF14;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="matrix" id="matrix-background"></div>
+
+    <div class="wrapper">
+        <div class="emailformbox">
+            <h2>Receive your OTP!</h2>
+            <form action="#">
+                <div class="inputbox">
+                    <input type="email" required>
+                    <label>Email</label>
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <button type="submit" class="otpbtn">Get OTP</button>
+                </div>
+                <div class="inputboxotp">
+                    <input type="number" required>
+                    <label>OTP</label>
+                    
+                </div>
+                <button type="submit" class="proceedbtn">Proceed</button>
+            </form>
+        </div>
+    </div>
+    <script src="forgotpasswordotp.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- JavaScript to create falling code effect -->
+   <script>
+    const matrixContainer = document.getElementById("matrix-background");
+
+    // Generate multiple spans with random code symbols
+    for (let i = 0; i < 100; i++) {
+        const codeSpan = document.createElement("span");
+        codeSpan.textContent = Math.random() > 0.5 ? "1" : "0";
+        codeSpan.style.left = `${Math.random() * 100}vw`;
+        codeSpan.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        codeSpan.style.fontSize = `${Math.random() * 24 + 12}px`;
+        matrixContainer.appendChild(codeSpan);
+    }
+</script>
+</body>
+</html>

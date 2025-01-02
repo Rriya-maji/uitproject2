@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up/Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Matrix code rain background */
+        .matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .matrix span {
+            position: absolute;
+            color: rgba(0, 255, 0, 0.7);
+            font-size: 18px;
+            animation: fall linear infinite;
+        }
+
+        /* Animation for the falling matrix code */
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* JavaScript generated matrix code */
+        .matrix span:nth-child(odd) {
+            animation-duration: 3s;
+        }
+        
+        .matrix span:nth-child(even) {
+            animation-duration: 4s;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .registerformbox {
+            background-color: #111;
+            padding: 40px;
+            border: 2px solid #39FF14;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .registerformbox h2 {
+            color: #39FF14;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .inputbox {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .inputbox input {
+            width: 100%;
+            padding: 10px 10px 10px 30px; /* Adjusted padding for icon space */
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #39FF14;
+            outline: none;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        .inputbox label {
+            position: absolute;
+            top: 10px;
+            left: 30px;
+            color: #39FF14;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .inputbox .icon {
+            position: absolute;
+            right: 10px; /* Position icon on the right */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #39FF14;
+            font-size: 1.2em;
+        }
+
+        .inputbox input:focus ~ label,
+        .inputbox input:valid ~ label {
+            top: -15px;
+            left: 30px;
+            color: #39FF14;
+            font-size: 0.85em;
+        }
+
+        .rememberforgot {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 20px; /* Added space below rememberforgot section */
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #39FF14;
+            border: none;
+            color: #000;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.3s;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 20px; /* Added space below submit button */
+        }
+
+        .btn:hover {
+            padding: 10px 20px;
+            background-color: #39FF14;
+            border: none;
+            color: #000;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.3s;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 20px; /* Added space below submit button */
+        }
+
+        .loginregister {
+            margin-top: 10px; /* Added space above loginregister */
+        }
+
+        .loginregister p {
+            color: #ddd;
+        }
+
+        .loginregister a {
+            color: #39FF14;
+            text-decoration: none;
+        }
+
+        .loginregister a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .modal-content {
+            background-color: #111;
+            color: #fff;
+            width: 80%;
+            max-width: 500px;
+            max-height: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #39FF14;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .terms-content {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+            padding-right: 10px; /* For smooth scrolling experience */
+        }
+
+        .terms-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .terms-content::-webkit-scrollbar-thumb {
+            background-color: #39FF14;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="matrix" id="matrix-background"></div>
+
+    <div class="wrapper">
+        <div class="registerformbox">
+            <h2>Register with us!</h2>
+            <form action="/sign_up" method="post">
+                <div class="inputbox">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" id="username" name="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="inputbox">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" id="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="inputbox">
+                    <span class="icon"><ion-icon name="lock"></ion-icon></span>
+                    <input type="password" id="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="rememberforgot">
+                    <label>
+                        <input type="checkbox" required>
+                        I Agree to the <span id="terms-link" style="color: #39FF14; cursor: pointer;">Terms & Conditions</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn" id="submit">Sign Up/Register</button>
+                <div class="loginregister">
+                    <p>Already have an account? <a href="login.html" class="loginlink">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Terms & Conditions -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Terms & Conditions</h3>
+            <div class="terms-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nesciunt vero commodi temporibus nulla facere inventore. Dolore quia debitis sint nobis officiis, accusantium ducimus! Voluptatibus dolorum odio eaque dicta aliquam.</p>
+                <!-- Add more content as needed -->
+            </div>
+        </div>
+    </div>
+<script src="routes.py"></script>
+    <script type="module">
+       
+        // Terms & Conditions modal functionality
+        const modal = document.getElementById("terms-modal");
+        const termsLink = document.getElementById("terms-link");
+        const closeModal = document.querySelector(".close");
+
+        termsLink.addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- JavaScript to create falling code effect -->
+    <script>
+        const matrixContainer = document.getElementById("matrix-background");
+
+        // Generate multiple spans with random code symbols
+        for (let i = 0; i < 100; i++) {
+            const codeSpan = document.createElement("span");
+            codeSpan.textContent = Math.random() > 0.5 ? "1" : "0";
+            codeSpan.style.left = `${Math.random() * 100}vw`;
+            codeSpan.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            codeSpan.style.fontSize = `${Math.random() * 24 + 12}px`;
+            matrixContainer.appendChild(codeSpan);
+        }
+    </script>
+    <script>
+    
+    const form = document.getElementById('registerForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/sign_up', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, email, password }),
+                });
+
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                alert('Registration failed. Please try again.');
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

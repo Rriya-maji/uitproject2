@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Info</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Matrix code rain background */
+        .matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .matrix span {
+            position: absolute;
+            color: rgba(0, 255, 0, 0.7);
+            font-size: 18px;
+            animation: fall linear infinite;
+        }
+
+        /* Animation for the falling matrix code */
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* JavaScript generated matrix code */
+        .matrix span:nth-child(odd) {
+            animation-duration: 3s;
+        }
+        
+        .matrix span:nth-child(even) {
+            animation-duration: 4s;
+        }
+
+
+        /* Main content styles */
+        .content {
+            margin: 8vh;
+            padding-left: 10vh;
+            padding-right: 10vh;
+            width: calc(100% - 250px);
+            align-items: center;
+            justify-content: center;
+            background-color: #111;
+        }
+
+        .content {
+        border: 2px solid #39FF14; /* Green border for consistency with the theme */
+        border-radius: 3vh;
+        overflow-y: auto; /* Enable vertical scrolling */
+        max-height: 100vh; /* Restrict height to viewport for scrolling */
+        }
+
+        .content h1{
+            font-size: 6vh;
+            padding-top: 8vh;
+            padding-bottom: 5vh;
+            text-decoration: underline;
+        }
+
+        .content p{
+            padding-bottom: 2vh;
+            line-height: 1.8;
+        }
+
+        .content ul li{
+            padding-bottom: 2vh;
+            line-height: 1.8;
+        }
+
+
+        /* Navigation Styles */
+        nav {
+            width: 250px;
+            background-color: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            position: relative;
+            height: 100vh;
+            box-shadow: 0px 0px 15px rgba(57, 255, 20, 0.3);
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .logo {
+            height: 80px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0px 0px 6px #39FF14);
+        }
+
+        #current{
+            color: #ebff14;
+        }
+
+        #current:hover{
+            color: #111;
+            background-color: #39FF14;
+            box-shadow: 0 0 8px rgba(57, 255, 20, 0.7);
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            list-style-type: none;
+            width: 100%;
+            padding: 0;
+        }
+
+        nav ul li {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        nav ul li a {
+            color: #39FF14;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 15px 20px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s, transform 0.3s;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(57, 255, 20, 0.1);
+            transform: skewX(-20deg);
+            transition: left 0.4s;
+        }
+
+        nav ul li a:hover::before {
+            left: 100%;
+        }
+
+        nav ul li a:hover {
+            color: #111;
+            background-color: #39FF14;
+            box-shadow: 0 0 8px rgba(57, 255, 20, 0.7);
+            transform: scale(1.05);
+        }
+
+        .highlight{
+            color: #39FF14;
+        }
+
+       
+    </style>
+</head>
+<body>
+
+    <div class="matrix" id="matrix-background"></div>
+
+    <nav>
+        <img src="uit_logo-removebg-preview.png" alt="logo" class="logo">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Dashboard</a></li>
+            <li><a href="#" id="current">Project Info</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h1>Introduction:</h1>
+            <p>Human beings have an exceptional ability to infer emotions through body language during face-to-face interactions. For instance, culturally similar gestures, such as <i><span class="highlight">touching one's nose</span></i> to signify disbelief or <i><span class="highlight">holding one's head in the hands</span></i> to convey distress, illustrate this intuitive skill. However, the growing prevalence of armed violence, violent conflicts, and criminal activities poses significant challenges. The global human rights crisis is exacerbated by the use of explosive weapons and various lethal personal arms, resulting in severe consequences. Between 2012 and 2016, such violence led to approximately <span class="highlight">1.4 million deaths</span> and <span class="highlight">2 million injuries</span>.</p>
+            <p>The rapid evolution of Machine Learning (ML), Deep Learning (DL) algorithms, and Convolutional Neural Networks (CNNs) has led to the development of precise models that address real-life challenges in areas such as medical diagnostics, agriculture, traffic management, threat management, activity classification, object classification, and autonomous vehicles. Human activity classification and object detection methods hold significant potential for transforming video surveillance systems, human-computer interaction, and robotics for human behavior characterization. The rapid evolution of Machine Learning (ML), Deep Learning (DL) algorithms, and Convolutional Neural Networks (CNNs) has led to the development of precise models that address real-life challenges in areas such as medical diagnostics, agriculture, traffic management, threat management, activity classification, object classification, and autonomous vehicles. Human activity classification and object detection methods hold significant potential for transforming video surveillance systems, human-computer interaction, and robotics for human behavior characterization.</p>
+            <p>To enable machines to acquire a similar ability, we propose a <span class="highlight">two-stage framework</span> for predicting emotions based on body language from regular RGB video inputs. In the first stage, the model predicts body language from input videos by estimating human poses. The predicted body language is then fed into the second stage for emotion interpretation. We define body language as either a maintained posture or a period of repeated short actions. Related research has suggested the recognition of various activities, such as standing/sitting, normal walking, running, and jogging, on smartphone devices. This research proposed an efficient combination of Convolutional Neural Networks (CNN), Long Short-Term Memory (LSTM) networks (an improvement over Recurrent Neural Networks (RNN)), and a self-attention model to represent activity features. During the data collection phase, it is assumed that smartphone usage is unconstrained, and inertial sensors, including acceleration, gyroscope, and linear acceleration sensors, are employed.</p>
+            <p>People often use body language (kinesics) as a physical, nonverbal form of communication to convey some feeling or intention. Common body languages include postures, gestures, facial expressions, and eye movements, which give away some clues to how you may really feel. Here are some body language meanings which can help you understand what other people are conveying.</p>
+            
+            <h1>Problem Statement:</h1>
+            <p>Traditional CCTV surveillance systems rely heavily on human operators for monitoring, which is labour-intensive, prone to human error, and inefficient in identifying suspicious activities. The need for continuous attention makes it difficult to detect and respond to potential threats promptly. Consequently, there is an urgent need for an intelligent, autonomous surveillance system that can accurately detect suspicious human behavior and predict potential malicious actions in real-time, thereby enhancing security and preventing crimes more effectively. This project addresses these limitations by leveraging AI technologies to create a more efficient and reliable and Scalable surveillance solution.</p>
+
+            <h1>Objectives Of The Project:</h1>
+            <p>This project aims to develop an advanced AI-driven surveillance system capable of detecting suspicious behavior autonomously, predicting actions based on behavioral analysis, ensuring real-time monitoring for immediate response, minimizing false alarms to enhance reliability, complying with privacy regulations, and designing for scalability and seamless integration with existing infrastructure.</p>
+                <ul>
+                    <li><span class="highlight">Develop an Intelligent Surveillance System:</span> Focuses on developing an advanced CCTV system enhanced with artificial intelligence to autonomously detect suspicious human behavior and predict subsequent actions.</li>
+                    <li><span class="highlight">Real-Time Monitoring:</span> This objective ensures that the surveillance system operates seamlessly in real-time, providing instant alerts to security personnel.</li>
+                    <li><span class="highlight">Minimize False Positives:</span> This aims to enhance the accuracy of the system by reducing false alarms and improving reliability.</li>
+                    <li><span class="highlight">Compliance and Privacy:</span> This objective ensures that AI systems are developed, deployed, and used in ways that are lawful, ethical, and respectful of individual's rights and freedoms.</li>
+                    <li><span class="highlight">Scalability and Integration:</span> This ensure that the solution is scalable and can seamlessly integrate with existing surveillance infrastructure.</li>
+                </ul>
+            <p>These objectives collectively aim to develop an advanced AI-driven surveillance system that enhances security effectiveness, operates in real-time, and integrates smoothly with existing infrastructure.</p>
+
+            <h1>Conclusion And Future Work:</h1>
+            <p>We anticipate that our advanced CCTV system will significantly enhance security by providing real-time, autonomous detection and prediction of suspicious human behavior and actions with high accuracy and fewer false alarms. Our goal is to deliver a scalable solution that not only improves public safety but also offers a robust framework for safeguarding communities effectively.</p>
+            <ul>
+                <li><span class="highlight">Refine AI Models:</span> We plan to improve our algorithms to better adapt to diverse environmental conditions. This will involve fine-tuning our models to handle various lighting, weather conditions, and different types of movement, ensuring that the system remains effective in all scenarios.</li>
+                <li><span class="highlight">Boost Real:</span> Time Processing- To minimize processing delays, we aim to develop low-latency algorithms. This will enhance the system's ability to process video feeds quickly, enabling faster detection and response to potential threats.</li>
+                <li><span class="highlight">Web Application Development:</span> We intend to create a user-friendly web application that will facilitate real-time monitoring and analysis. This interface will provide users with intuitive controls and comprehensive analytics to make it easier to manage and interpret surveillance data.</li>
+                <li><span class="highlight">Adaptive Learning:</span> Our system will incorporate mechanisms for continuous learning and adaptation. By regularly updating and enhancing AI models based on new data and insights, we will ensure that the system remains effective and up-to-date with evolving security needs and emerging threats.</li>
+            </ul>
+    </div>
+
+     <!-- JavaScript to create falling code effect -->
+     <script>
+        const matrixContainer = document.getElementById("matrix-background");
+
+        // Generate multiple spans with random code symbols
+        for (let i = 0; i < 100; i++) {
+            const codeSpan = document.createElement("span");
+            codeSpan.textContent = Math.random() > 0.5 ? "1" : "0";
+            codeSpan.style.left = `${Math.random() * 100}vw`;
+            codeSpan.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            codeSpan.style.fontSize = `${Math.random() * 24 + 12}px`;
+            matrixContainer.appendChild(codeSpan);
+        }
+    </script>
+
+</body>
+</html>
